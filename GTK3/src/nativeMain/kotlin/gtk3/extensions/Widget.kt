@@ -4,7 +4,6 @@ import gtk3.GtkWidget
 import gtk3.gtk_widget_destroy
 import kotlinx.cinterop.CPointer
 
-@GtkDsl
 abstract class Widget {
     abstract val widgetPtr: CPointer<GtkWidget>
     fun destroy() = gtk_widget_destroy(widgetPtr)
