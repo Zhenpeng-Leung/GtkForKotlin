@@ -1,24 +1,12 @@
 headers = gtk/gtk.h
 headerFilter = gtk/* gobject/* gio/*
 
-compilerOpts.osx = -I/usr/local/include \
-                   -I/usr/local/include/gtk-3.0 \
-                   -I/usr/local/include/glib-2.0 \
-                   -I/usr/local/include/pango-1.0 \
-                   -I/usr/local/include/cairo \
-                   -I/usr/local/include/gdk-pixbuf-2.0 \
-                   -I/usr/local/include/atk-1.0 \
-                   -I/usr/local/include/harfbuzz \
-                   -I/usr/local/lib/glib-2.0/include
-
-compilerOpts.linux = -I/usr/lib/x86_64-linux-gnu/glib-2.0/include \
-                     -I/usr/local/lib/glib-2.0/include \
-                     -I/usr/lib64/glib-2.0/include
-
 linkerOpts.osx = -L/usr/local/lib
 
 linkerOpts.linux = -L/usr/lib64 \
                    -L/usr/lib/x86_64-linux-gnu
+
+linkerOpts.mingw = -LD:/ProgramData/msys64/mingw64/lib
 # All host
 linkerOpts = -lglib-2.0 \
              -lgdk-3 \
