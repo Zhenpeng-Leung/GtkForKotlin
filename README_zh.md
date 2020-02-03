@@ -10,17 +10,10 @@
    ```
 * Windows平台
     * 由于gtk3是MSYS2的开发环境，应用程序应该在`MINGW64`工具中打开。
-    * 首先进入项目目录，运行以下命令：
+    * 示例`demo`构建脚本定义了 `mingwDist`任务，运行任务它将会在程序目录生成一个`mingwDist`脚本，
+    并且它将打开`MINGW64`工具运行这个脚本，脚本用于分析程序运行所依赖的动态库并将其复制到程序目录，
+    如果你将`MSYS2`定制安装在其他位置，在执行该任务之前，确保系统已设置`MSYS2_DIR`和`MINGW64_DIR`
+    环境变量，现在，你可以运行它：
    ```shell script
    gradlew run
    ```
-  * 这时候会提示程序异常退出，这是因为系统缺少运行gtk+程序所需要的库导致的。
-  * 打开`MINGW64`工具，进入`$GtkForKotlin\build\demo\bin\native\releaseExecutable`目录，运行以下命令：
-  ```shell script
-  ./demo.exe
-  ```
-  * 你应该可以看到程序正常运行了。
-  * `$GtkForKotlin`目录有一个Windows平台的分发工具`mingwDist`，将工具复制到程序目录
-  `$GtkForKotlin\build\demo\bin\native\releaseExecutable`，它同样需要`MINGW64`工具来运行,
-  它会将程序运行所需要的`*.dll`库文件复制到程序目录，现在，你可以双击运行程序了。
-  * 或者现在你可以使用`gradlew run`运行它。

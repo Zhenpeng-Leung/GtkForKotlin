@@ -8,18 +8,12 @@
     gradlew run
     ```
 * Windows platform
-    * since gtk3 is the development environment for MSYS2, the application should open in the `MINGW64` tool.
-    * first go to the project directory and run the following command:
+    * since gtk3 is the development environment for `MSYS2`, the application should open in the `MINGW64` tool.
+    * The sample `demo` build script defines the `mingwDist` task, which will generate a `mingwDist` script in 
+    the program directory when it runs the task, and it will open the `MINGW64` tool to run the script. 
+    The script is used to analyze the dynamic libraries on which the program runs and copy it to the program directory.
+    If you have the `MSYS2` custom installed somewhere else, make sure the system has the `MSYS2_DIR` and `MINGW64_DIR`
+     environment variables set before performing this task. Now you can run it:
     ```shell script
     gradlew run
     ```
-    * at this point, the application is prompted for an exception exit because the system lacks the libraries needed to run the GTK+ application.
-    * open the `MINGW64` tool, enter the `$GtkForKotlin\build\demo\bin\native\releaseExecutable` directory, and run the following command:
-    ```shell script
-    ./demo.exe
-    ```
-    * you should be able to see that the program is working.
-    * `$GtkForKotlin` directory has a Windows distribution tool, `mingwDist`, that copies the tools to the program directory
-    `$GtkForKotlin\build\demo\bin\native\releaseExecutable`, which also requires the `MINGW64` tool to run,
-    It copies the `*.dll` library needed to run the program to the program directory. Now, you can double-click to run the program.
-    * or now you can run it using `gradlew run`.
